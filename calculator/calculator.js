@@ -8,21 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 function calculate(weight, height) {
-  // let bmi;
-
-  //Now I have added the formula for calculating BMI in "bmi"
-  return (weight / Math.pow((height / 100), 2)).toFixed(1);
-
-  // //When the BMI is less than 18.5, you can see the text below
-  //   if(bmi < 18.5){
-  //       category = "Underweight 😒";
-  //   } else if( bmi >= 18.5 && bmi <= 24.9 ){
-  //       category = "Normal Weight 😍";
-  //   } else if( bmi >= 25 && bmi <= 29.9 ){
-  //       category = "Overweight 😮";
-  //   } else{
-  //       category = "Obese 😱";
-  //   }
+  return (weight / Math.pow((height), 2)).toFixed(2);
 }
 
 app.get('/', (req, res) => {
@@ -41,7 +27,7 @@ app.post("/", (req, res) => {
 
 app.post('/bmicalculator', (req, res) => {
   const { weight, height } = req.body;
-  const bmi = calculate(weight, height);
+  let bmi = calculate(parseFloat(weight), parseFloat(height));
   res.send(`Your BMI is ${bmi}`);
 });
 

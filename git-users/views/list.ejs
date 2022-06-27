@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git users</title>
+</head>
+
+<body>
+  <h1><%= headerText %></h1>
+  <form action="/" method="post">
+    <label for="username">Enter user name</label>
+    <input type="text" name="username" id="username">
+    <input type="submit" value="Find">
+  </form>
+  <div>
+    <% const [name, url, avatar_url] =  gitData %>
+    <p><strong>Name:</strong> <%= name %> </p>
+    <p><strong>URL</strong> <%= url %></p>
+    <img src=<%= avatar_url %> alt="avatar">
+  </div>
+</body>
+
+</html>

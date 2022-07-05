@@ -1,8 +1,16 @@
-const superheroes = require('superheroes');
-const supervillains = require('supervillains');
+const http = require('http');
+const port = 3000;
 
-const mySuperHeroeName = superheroes.random();
-const mySupervillainName = supervillains.random();
+const ourApp = http.createServer((req, res) => {
+  if (req.url === "/") {
+    res.end('home page');
+  }
 
-console.log(mySuperHeroeName);
-console.log(mySupervillainName);
+  if (req.url === "/about") {
+    res.end("about page");
+  }
+
+  res.end("Invalid request!");
+});
+
+ourApp.listen(port, () => { `Server is running on port ${port}`; });
